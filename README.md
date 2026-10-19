@@ -1,10 +1,14 @@
-# Cosmic Cargo — protótipo 0.27
+# Cosmic Cargo — protótipo 0.28
 
 ## Sobre o projeto
 
 Cosmic Cargo é um exercício de vibe coding: um protótipo experimental criado por meio de ciclos rápidos de ideias, implementação, testes e ajustes realizados em colaboração com inteligência artificial. O objetivo é explorar criação de jogos, balanceamento e evolução de mecânicas de forma prática, sem a pretensão de representar um produto final ou uma arquitetura definitiva de produção.
 
-O jogo funciona diretamente no navegador com HTML5 Canvas, CSS e JavaScript, sem instalação, servidor ou dependências externas. Para jogar, basta abrir `index.html` em um navegador moderno. O progresso da carreira é armazenado localmente pelo navegador.
+O jogo funciona diretamente no navegador com HTML5 Canvas, CSS e JavaScript, sem instalação, servidor ou dependências externas. Para jogar no Windows, abra `Cosmic Cargo.exe` ou o atalho `Cosmic Cargo.lnk`. Também é possível abrir `app/index.html` diretamente em um navegador moderno. O progresso da carreira é armazenado localmente pelo navegador.
+
+## Estrutura de pastas
+
+`app/` contém o jogo e seus recursos; `app/assets/css/` reúne os estilos; `app/assets/js/` contém a lógica; `app/assets/icons/` guarda os ícones; `docs/` reúne o GDD e a arquitetura; `launcher-src/` preserva o código-fonte do iniciador; e a raiz contém o executável, o atalho e este README.
 
 ## Proposta atual
 
