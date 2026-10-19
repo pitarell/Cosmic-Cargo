@@ -195,3 +195,9 @@ A barra de navegação exibe somente Contratos, Carga e Garagem. O voo permanece
 A abertura interna da tela de voo não depende mais da existência de uma aba correspondente. Ao iniciar missão ou treinamento, a tela exibe “Pronto para o pouso”, aguarda qualquer controle e executa a contagem regressiva de três segundos.
 
 O pagamento passa a seguir uma tabela direta: cinco estrelas equivalem a 100% do frete; quatro, 85%; três, 70%; duas, 55%; uma, 40%. Um critério técnico reprovado não acrescenta outra penalidade se a nave sobreviver. A destruição total aplica um multiplicador adicional de 20% ao valor calculado. Arquivos estáticos recebem identificação de versão para evitar regras antigas armazenadas pelo navegador.
+
+## 40. Curva de preços e cancelamento na carga 0.26
+
+Os três primeiros níveis de cada melhoria custam, respectivamente, 1×, 1,4× e 1,85× o preço-base ajustado à categoria da nave. O quarto nível é calculado em 108% do primeiro nível da mesma melhoria na nave da categoria seguinte. Na categoria máxima, utiliza-se 2,7× o preço-base da própria nave. A regra torna a evolução gradual e faz o último investimento de uma categoria ficar ligeiramente acima do início da categoria seguinte.
+
+Cada contrato comum listado no manifesto da aba Carga possui o botão “Cancelar contrato”. O cancelamento remove a encomenda aceita, apaga sua peça do compartimento e atualiza massa, espaço e combustível sem exigir retorno ao quadro de contratos. Cargas humanitárias obrigatórias não podem ser canceladas.

@@ -1,4 +1,4 @@
-# Cosmic Cargo — protótipo 0.25
+# Cosmic Cargo — protótipo 0.27
 
 ## Sobre o projeto
 
@@ -14,7 +14,7 @@ Os destinos atuais são Lua, Marte, Europa, Vênus, Titã, Andrômeda, Triângul
 
 ## Contratos e acondicionamento
 
-É possível transportar várias encomendas para o mesmo destino em uma única viagem. Cada contrato possui cliente, carga, massa, volume, formato, resistência, nível de confiança e pagamento individual. Ofertas incompatíveis são bloqueadas quando excedem massa, espaço, categoria da nave ou combustível disponível.
+É possível transportar várias encomendas para o mesmo destino em uma única viagem. Cada contrato possui cliente, carga, massa, volume, formato, resistência, nível de confiança e pagamento individual. Ofertas incompatíveis são bloqueadas quando excedem massa, espaço, categoria da nave ou combustível disponível. Na aba Carga, cada encomenda comum possui um botão para cancelar diretamente o contrato; cargas humanitárias obrigatórias permanecem bloqueadas.
 
 As cargas utilizam peças rígidas inspiradas em Tetris. Elas podem ser giradas e reposicionadas, mas não separadas. A distribuição de massa altera o centro de massa lateral e vertical: cargas altas ou afastadas do centro dificultam o controle da nave. Os compartimentos possuem seis, oito ou dez espaços, conforme a categoria da nave.
 
@@ -32,7 +32,7 @@ O combustível custa um crédito por unidade e permanece no tanque entre as miss
 
 ## Progressão
 
-A confiança varia de 0 a 100 e, na configuração atual do protótipo, uma nova carreira começa em 51. As categorias de encomendas são liberadas nos marcos 0, 25, 50, 75 e 100, oferecendo contratos progressivamente mais valiosos. A garagem possui melhorias permanentes de potência, precisão, eficiência, compartimento, estabilização, tanque, trem de pouso e Computador de Pouso. O computador é a melhoria mais cara e auxilia progressivamente até controlar 50% das correções.
+A confiança varia de 0 a 100 e, na configuração atual do protótipo, uma nova carreira começa em 51. As categorias de encomendas são liberadas nos marcos 0, 25, 50, 75 e 100, oferecendo contratos progressivamente mais valiosos. A garagem possui melhorias permanentes de potência, precisão, eficiência, compartimento, estabilização, tanque, trem de pouso e Computador de Pouso. O computador é a melhoria mais cara e auxilia progressivamente até controlar 50% das correções. Os preços seguem uma curva de 1×, 1,4× e 1,85× nos três primeiros níveis; o quarto nível custa 8% mais que o primeiro nível da mesma melhoria na nave da categoria seguinte.
 
 Existem cinco categorias de nave com diferenças de preço, capacidade, autonomia, tecnologia e aparência. A nave anterior entra como desconto na troca, proporcional à sua integridade, e fica bloqueada após a compra. Todas as melhorias são zeradas ao trocar de nave, enquanto a categoria seguinte possui desempenho básico superior ao potencial máximo da anterior.
 
