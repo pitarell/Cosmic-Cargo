@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#07111f">
+  <meta name="cosmic-cargo-edition" content="android">
+  <title>Cosmic Cargo</title>
+  <link rel="icon" href="assets/icons/cosmic-cargo.png">
+  <link rel="stylesheet" href="assets/css/style.css?v=037">
+  <link rel="stylesheet" href="assets/css/v2.css?v=037">
+  <link rel="stylesheet" href="assets/css/v3.css?v=044">
+</head>
+<body>
+  <div id="startScreen" class="start-screen">
+    <div class="start-card"><img class="brand-icon start-brand-icon" src="assets/icons/cosmic-cargo.png" alt="Cosmic Cargo"><p class="eyebrow">SINDICATO DE TRANSPORTE GALÁTICO</p><h1>COSMIC CARGO</h1><p>Transporte cargas, domine diferentes atmosferas e construa sua carreira entre os mundos.</p><div class="language-picker" aria-label="Idioma"><span>IDIOMA / LANGUAGE</span><button class="secondary" data-language="pt-BR" aria-pressed="true">Português</button><button class="secondary" data-language="en-US" aria-pressed="false">English</button></div><div class="start-actions"><button id="trainingBtn" class="secondary">Treino</button><button id="newCareerBtn" class="primary">Nova Carreira</button><button id="continueBtn" class="secondary">Continuar Carreira</button></div><div id="trainingDestinations" class="training-destinations hidden"><p>Escolha um pouso de treinamento:</p></div></div>
+  </div>
+  <header class="topbar">
+    <div class="brand"><img class="brand-icon" src="assets/icons/cosmic-cargo.png" alt=""><div><strong>COSMIC CARGO</strong><small>Versão 0.43</small></div><div class="header-actions"><button id="mainMenuBtn" class="secondary" title="Voltar à tela principal">Menu principal</button><button id="restartCareerBtn" class="danger" title="Apagar o progresso e iniciar novamente">Reiniciar carreira</button></div></div>
+    <div class="resources"><span><small>CRÉDITOS</small><b id="credits">0</b></span><span><small>COMBUSTÍVEL</small><b id="headerFuel">0</b></span><span><small>CONFIANÇA</small><b id="reputation">0</b></span></div>
+  </header>
+  <nav class="nav" aria-label="Seções">
+    <button data-view="contracts" class="active">Contratos</button><button data-view="cargo">Carga <span id="cargoBadge" class="badge">0</span></button><button data-view="hangar">Hangar</button><button data-view="workshop">Oficina</button><button data-view="refueling">Abastecimento</button><button data-view="dealership">Concessionária</button><button data-view="credit">Crédito empresarial</button><button data-view="finance">Financeira</button><button data-view="automatic">Contratações e viagens automáticas</button>
+  </nav>
+  <main>
+    <section id="contracts" class="view active">
+      <div class="section-head"><div><p class="eyebrow">QUADRO DE DESPACHO</p><h1>Escolha seu próximo destino</h1><p>Combine várias encomendas para o mesmo mundo e aumente o lucro da viagem.</p></div><button id="refreshContracts" class="secondary">Atualizar quadro · 40 CR</button></div>
+      <div id="destinationFilter" class="chips"></div><div id="destinationLore" class="destination-lore hidden"></div><div id="contractFuelStatus" class="route-fuel-status"></div><div id="contractList" class="contract-grid"></div>
+      <div class="contract-proceed"><button id="goToCargo" class="primary" disabled>Selecione ao menos um contrato</button></div>
+    </section>
+    <section id="cargo" class="view">
+      <div class="section-head"><div><p class="eyebrow">PLANO DE CARGA</p><h1>Encaixe as cargas</h1><p>Cada carga possui formato rígido. Arraste, reposicione ou gire a peça inteira sem separar seus slots.</p></div><div class="summary" id="cargoSummary"></div></div>
+      <div class="cargo-layout">
+        <aside><h2>Manifesto</h2><div id="manifest"></div></aside>
+        <div class="hold-panel"><div class="hold-title"><strong>ÁREA EXTERNA DE CARGA</strong><span>Carregue, gire e selecione uma peça antes de escolher o slot.</span></div><div id="cargoStaging" class="cargo-staging"></div><div class="hold-title"><strong>▲ PROA</strong><span>Compartimento · pares esquerdo/direito</span></div><div class="ship-hold-frame"><span class="wing-label wing-left">◀ ASA ESQUERDA</span><div id="cargoHold" class="cargo-hold"></div><span class="wing-label wing-right">ASA DIREITA ▶</span></div><div class="engine-labels"><span>MOTOR E</span><b>▼ CAUDA</b><span>MOTOR D</span></div><div class="balance-track"><span id="balanceMarker"></span></div><p id="balanceText" class="hint"></p></div>
+      </div>
+      <div class="actionbar"><button id="clearCargo" class="secondary">Retirar cargas</button><button id="launchBtn" class="primary">Iniciar missão lunar</button></div>
+    </section>
+    <section id="flight" class="view flight-view">
+      <div class="flight-hud"><span>FASE <b id="hudPhase">—</b></span><span>ALT <b id="hudAlt">—</b></span><span>VEL <b id="hudVel">—</b></span><span>ÂNGULO <b id="hudAngle">—</b></span><span>COMBUSTÍVEL <b id="hudFuel">—</b></span><span>CALOR <b id="hudHeat">—</b></span></div>
+      <canvas id="gameCanvas" width="960" height="600" aria-label="Área de voo"></canvas>
+      <div id="flightStartOverlay" class="flight-start-overlay hidden"><p id="flightStartLabel">PRONTO PARA O POUSO</p><strong id="flightCountdown">Pressione Q, A, O, K ou toque em um controle</strong></div>
+      <div class="flight-help"><span>Q/A: motores superior e inferior esquerdos.</span><span>O/K: motores superior e inferior direitos.</span><span>R: reiniciar tentativa</span></div>
+      <div class="touch-controls"><div class="touch-column"><button id="topLeftThruster">Q<br><small>SUPERIOR E</small></button><button id="bottomLeftThruster">A<br><small>INFERIOR E</small></button></div><div class="touch-column"><button id="topRightThruster">O<br><small>SUPERIOR D</small></button><button id="bottomRightThruster">K<br><small>INFERIOR D</small></button></div></div>
+      <div id="resultPanel" class="result-panel hidden"></div>
+    </section>
+    <section id="hangar" class="view">
+      <div class="section-head"><div><p class="eyebrow">HANGAR 07</p><h1>Suas naves</h1><p>Consulte a frota comprada, compare suas melhorias e escolha qual nave ficará ativa.</p></div><button id="resetSave" class="danger">Reiniciar carreira</button></div>
+      <div id="fleetGrid" class="fleet-grid"></div>
+    </section>
+    <section id="workshop" class="view">
+      <div class="section-head"><div><p class="eyebrow">OFICINA</p><h1>Reparos e melhorias</h1><p>Todo serviço é aplicado somente à nave ativa e permanece registrado nela.</p></div></div>
+      <div class="facility-layout"><div id="workshopShipCard" class="facility-summary"></div><div><div id="repairPanel" class="repair-panel"></div><h2>Melhorias da nave ativa</h2><div id="upgradeShop" class="shop-grid"></div></div></div>
+    </section>
+    <section id="refueling" class="view">
+      <div class="section-head"><div><p class="eyebrow">POSTO ORBITAL</p><h1>Abastecimento</h1><p>Compre combustível para a nave ativa; o saldo permanece entre as missões.</p></div></div>
+      <div class="facility-layout compact"><div id="refuelShipCard" class="facility-summary"></div><div id="fuelShop" class="fuel-shop"></div></div>
+    </section>
+    <section id="dealership" class="view">
+      <div class="section-head"><div><p class="eyebrow">CONCESSIONÁRIA</p><h1>Comprar novas naves</h1><p>Compre pelo valor integral ou entregue a nave ativa como parte do pagamento. A troca é sempre opcional.</p></div></div>
+      <div id="shipShop" class="dealership-grid"></div>
+    </section>
+    <section id="credit" class="view">
+      <div class="section-head"><div><p class="eyebrow">BANCO INTERPLANETÁRIO</p><h1>Crédito empresarial</h1><p>Contrate empréstimos desde o início da carreira. A dívida recebe juros únicos de 5% e é amortizada pelas entregas.</p></div></div>
+      <div class="credit-layout"><div id="loanPanel"></div></div>
+    </section>
+    <section id="finance" class="view">
+      <div class="section-head"><div><p class="eyebrow">CENTRAL FINANCEIRA</p><h1>Resultados da transportadora</h1><p>Acompanhe receitas, despesas e o resultado líquido dos contratos e das operações da frota.</p></div></div>
+      <div id="financeSummary" class="finance-summary"></div>
+      <div class="finance-ledger"><div class="finance-ledger-head"><h2>Livro-caixa</h2><span>Registros mais recentes primeiro</span></div><div id="financeLedger"></div></div>
+    </section>
+    <section id="automatic" class="view">
+      <div class="section-head"><div><p class="eyebrow">CENTRAL DE OPERAÇÕES AFK</p><h1>Contratações e viagens automáticas</h1><p>Monte turnos, treine pilotos e mantenha as três primeiras categorias de nave trabalhando mesmo quando o jogo estiver fechado.</p></div><button id="toggleAutomatic" class="danger">Encerrar viagens automáticas</button></div>
+      <div id="automaticLock" class="automatic-lock"></div>
+      <div id="automaticSummary" class="automatic-summary"></div>
+      <div class="management-grid"><div><h2>Gerência de operações</h2><div id="managerPanel"></div></div></div>
+      <h2>Ordem dos turnos por nave</h2><div id="shipShiftOrder" class="shift-order-grid"></div>
+      <h2 id="crewHeading">Funcionários contratados</h2><div id="crewGrid" class="crew-grid"></div>
+      <h2 id="candidatesHeading">Candidatos disponíveis</h2><div id="candidateGrid" class="crew-grid"></div>
+      <h2>Relatório das viagens</h2><div id="automaticLog" class="automatic-log"></div>
+    </section>
+  </main>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="shipPurchaseModal" class="purchase-modal hidden" role="dialog" aria-modal="true" aria-labelledby="purchaseTitle"><div class="purchase-card" id="shipPurchaseContent"></div></div>
+  <script src="assets/js/game.js?v=044"></script>
+  <script src="assets/js/i18n.js?v=044"></script>
+</body>
+</html>
