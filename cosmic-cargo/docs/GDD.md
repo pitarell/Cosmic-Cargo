@@ -1,4 +1,4 @@
-# Cosmic Cargo — Game Design Document 0.43
+# Cosmic Cargo — Game Design Document 0.45
 
 ## Visão
 

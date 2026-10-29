@@ -1,10 +1,10 @@
-# Cosmic Cargo — versão 0.43
+# Cosmic Cargo — versão 0.45
 
 Cosmic Cargo é um exercício de vibe coding desenvolvido por ciclos de criação, teste e balanceamento com apoio de inteligência artificial. O projeto continua experimental, mas esta distribuição reúne o jogo-base atualizado, a edição completa para Steam, a edição Android limitada à categoria 3, o executável para Windows, o APK de teste e a documentação consolidada.
 
 ## Como executar
 
-No Windows, abra `Cosmic Cargo.exe` ou o atalho `Cosmic Cargo.lnk`. No navegador, abra `app/index.html`. A edição Steam está em `editions/steam`; a edição Android está em `editions/android`; o instalador de teste está em `dist/Cosmic-Cargo-Android-0.43.apk`. O jogo funciona offline e salva a carreira localmente no navegador ou na WebView do aplicativo.
+Na fase atual, abra `app/index.html` no navegador. O jogo funciona offline e salva a carreira localmente no navegador.
 
 ## Jogo
 

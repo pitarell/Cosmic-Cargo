@@ -1,4 +1,4 @@
-# Cosmic Cargo — Esquema técnico 0.43
+# Cosmic Cargo — Esquema técnico 0.45
 
 ## Plataforma e distribuição
 
@@ -26,7 +26,7 @@ O módulo AFK usa horários absolutos para viagens, turnos, finais de semana, de
 
 ## Interface
 
-As telas administrativas são HTML; o voo é Canvas. Entrada de teclado e eventos pointer compartilham ações, permitindo toque e arraste de carga. A tradução percorre conteúdo estático e elementos criados em tempo de execução. O ícone é PNG na interface e Android e ICO no Windows. O cabeçalho informa apenas `Versão 0.43` ou `Version 0.43`.
+As telas administrativas são HTML; o voo é Canvas. Entrada de teclado e eventos pointer compartilham ações, permitindo toque e arraste de carga. A tradução percorre conteúdo estático e elementos criados em tempo de execução. O ícone é PNG na interface e ICO no Windows. O cabeçalho informa apenas `Versão 0.45` ou `Version 0.45`.
 
 ## Testes mínimos
 
